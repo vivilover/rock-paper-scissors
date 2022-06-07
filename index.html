@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+  </head>
+  <body>
+    <h1> Rock, Paper, Scissors!
+    </h1>
+    <div class="instruction">Winner to reach 5 first will climb the next route first. Ready?</div>
+    <div class="play-button" onclick="game()">
+      <div class="button">PLAY A ROUND!</div>
+    </div>
+    <div class="image-container">
+      <div>Player played: <img class="player-played" src="./img/paper.jpeg"></div>
+      <div>Computer played: <img class="computer-played" src="./img/paper.jpeg"></div>
+    </div>
+    <div class="tally-container">
+      <div>User won: <span class="player-won-count">0</span></div>
+      <div>Computer won: <span class="computer-won-count">0</span></div>
+      <div>Total rounds played: <span class="total-rounds-count">0</span></div>
+    </div>
+    <div class="game-end-notification"></div>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
