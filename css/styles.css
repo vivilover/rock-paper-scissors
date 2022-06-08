@@ -53,3 +53,9 @@ h1 {
   font-weight: bold;
   text-align: center;
 }
+.win-flash {
+  transform: scale(1.1);
+  border-color: rgb(184, 83, 83);
+  box-shadow: 0 0 10px rgb(184, 83, 83);
+  transition: all .3s;
+}

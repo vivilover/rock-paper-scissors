@@ -2,6 +2,10 @@ let playerWinCount = 0;
 let computerWinCount = 0;
 let totalRoundsPlayed = 0;
 
+const paperBtn = document.body.querySelector("#paper-btn");
+const rockBtn = document.body.querySelector("#rock-btn");
+const scissorsBtn = document.body.querySelector("#scissors-btn");
+
 function playerWon() {
   playerWinCount++;
   totalRoundsPlayed++;
@@ -45,6 +49,22 @@ function userPlay() {
 let computerSelection = computerPlay();
 let playerSelection = '';
 // playerWon, computerWon
+function playerWinFlash() {
+  const player = document.body.querySelector(".player-played");
+  player.classList.add("win-flash");
+}
+function computerWinFlash() {
+  const computer = document.body.querySelector(".computer-played");
+  computer.classList.add("win-flash");
+}
+function removeTransition(e) {
+  if(e.propertyName !== 'transform') return;
+  console.log(this);
+  this.classList.remove('win-flash');
+}
+const images = document.querySelectorAll("img");
+images.forEach(image => image.addEventListener("transitionend", removeTransition));
+
 function playRound(playerSelection, computerSelection) {
   if((playerSelection === 'rock' && computerSelection === 'rock')
   || (playerSelection === 'paper' && computerSelection === 'paper')
@@ -55,32 +75,47 @@ function playRound(playerSelection, computerSelection) {
   } else if(playerSelection === 'rock' && computerSelection === 'scissors') {
     console.log("You win! Rock beats scissors");
     playerWon();
+    playerWinFlash();
   } else if(playerSelection === 'scissors' && computerSelection === 'rock') {
     console.log("You Lose! Computer's rock beats scissors");
     computerWon();
+    computerWinFlash();
   } else if(playerSelection === 'paper' && computerSelection === 'rock') {
     console.log("You Win! Paper beats rock");
     playerWon();
   } else if(playerSelection === 'rock' && computerSelection === 'paper') {
     console.log("You Lose! Computer's paper beats rock");
     computerWon();
+    computerWinFlash();
   } else if(playerSelection === 'scissors' && computerSelection === 'paper') {
     console.log("You Win! Scissors beats paper");
     playerWon();
+    playerWinFlash()
   } else if(playerSelection === 'paper' && computerSelection === 'scissors') {
     console.log("You Lose! Computer's scissors beats paper");
     computerWon();
+    computerWinFlash();
   }
 }
+paperBtn.addEventListener('click', paperSound);
+rockBtn.addEventListener('click', rockSound);
+scissorsBtn.addEventListener('click', scissorsSound);
 
-/*
-/ Let the user know we are playing a game out of 5
-/ When the user clicks a "PLAY" button, begin the game.
-/ Count the wins for each player (And show it on the screen)
-/ At the end of 5 turns, let the user know who won.
-/
-*/
-
+function paperSound() {
+  const paperAudio = document.body.querySelector(`#paper-audio`);
+  console.log(paperAudio);
+  paperAudio.play();
+}
+function rockSound() {
+  const rockAudio = document.body.querySelector(`#rock-audio`);
+  console.log(rockAudio);
+  rockAudio.play();
+}
+function scissorsSound() {
+  const scissorsAudio = document.body.querySelector(`#scissors-audio`);
+  console.log(scissorsAudio);
+  scissorsAudio.play();
+}
 
 // Change player score in HTML
 function displayPlayerScore() {
@@ -142,3 +177,5 @@ function game() {
     changeComputerImage(computerSelection);
   }
 }
+
+const playButton = document.body.querySelector(".play-button");
